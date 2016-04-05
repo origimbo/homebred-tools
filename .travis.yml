@@ -1,7 +1,7 @@
 os:
   - osx
 
-before install:
+before_install:
 
   - brew update
   - brew tap origimbo/tools

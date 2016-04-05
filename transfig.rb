@@ -7,12 +7,13 @@ class Transfig < Formula
   depends_on 'jpeg'
   depends_on 'ghostscript'
   depends_on :x11
-  depends_on "gcc"
+  depends_on 'gcc'
 
   fails_with :clang do
     cause "clang fails to process xfig's imake rules"
   end
   fails_with :llvm
+  fails_with :gcc_4_0
 
   env :std
 
@@ -55,7 +56,7 @@ class Transfig < Formula
     system "make Makefiles"
 
     # build everything
-    system "make", "CC=#{ENV["CC"]} CXX=#{ENV["CXX"]} CCOPTIONS="-Wall -Wpointer-arith"'
+    system "make", "CC=#{ENV["CC"]}", "CXX=#{ENV["CXX"]}", 'CCOPTIONS=""'
 
     # install everything
     system "make install"
@@ -63,7 +64,7 @@ class Transfig < Formula
 
   end
 
-  def test
+  test do
 
     system "echo hello"
 
