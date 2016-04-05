@@ -1,6 +1,6 @@
 class Transfig < Formula
   homepage 'http://www.xfig.org'
-  url 'http://downloads.sourceforge.net/mcj/transfig.3.2.5e.tar.gz'
+  url 'https://downloads.sourceforge.net/mcj/transfig.3.2.5e.tar.gz'
   version '3.2.5e'
 
   depends_on 'homebrew/x11/imake' => :build
@@ -13,14 +13,12 @@ class Transfig < Formula
     cause "clang fails to process xfig's imake rules"
   end
   fails_with :llvm
-   
+
   env :std
 
   def install
     # transfig does not like to execute makefiles in parallel
     ENV.deparallelize
-
-    ENV["CC"] = "gcc-5"
 
     # Patch tranfig/Imakefile
     inreplace "transfig/Imakefile", "XCOMM BINDIR = /usr/bin/X11",
@@ -57,12 +55,12 @@ class Transfig < Formula
     system "make Makefiles"
 
     # build everything
-    system 'make CC=gcc-5 CXX=g++-5 CCOPTIONS="-Wall -Wpointer-arith"'
+    system 'make CC=#{ENV["CC"]} CXX=#{ENV["CXX"]} CCOPTIONS="-Wall -Wpointer-arith"'
 
     # install everything
     system "make install"
     system "make install.man"
-    
+
   end
 
   def test
