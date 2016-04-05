@@ -9,7 +9,7 @@ before install:
 
 script:
 
-  - brew audit   origimbo/tools/transfig
   - brew install origimbo/tools/transfig
+  - brew audit   origimbo/tools/transfig
   - brew test    origimbo/tools/transfig
   

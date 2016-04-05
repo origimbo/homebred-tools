@@ -6,7 +6,7 @@ class Transfig < Formula
   depends_on 'homebrew/x11/imake' => :build
   depends_on 'jpeg'
   depends_on 'ghostscript'
-  depends_on :x11 => "2.7.8"
+  depends_on :x11
   depends_on "gcc"
 
   fails_with :clang do
