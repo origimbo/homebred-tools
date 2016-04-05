@@ -55,7 +55,7 @@ class Transfig < Formula
     system "make Makefiles"
 
     # build everything
-    system 'make CC=#{ENV["CC"]} CXX=#{ENV["CXX"]} CCOPTIONS="-Wall -Wpointer-arith"'
+    system "make", "CC=#{ENV["CC"]} CXX=#{ENV["CXX"]} CCOPTIONS="-Wall -Wpointer-arith"'
 
     # install everything
     system "make install"

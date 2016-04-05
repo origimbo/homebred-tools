@@ -11,5 +11,6 @@ script:
 
   - brew install origimbo/tools/transfig
   - brew audit   origimbo/tools/transfig
+  - brew info    origimbo/tools/transfig
   - brew test    origimbo/tools/transfig
   
