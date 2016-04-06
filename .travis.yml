@@ -4,6 +4,7 @@ os:
 before_install:
 
   - brew update
+  - brew tap homebrew/science	
   - brew tap origimbo/tools
 
 env:
