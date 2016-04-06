@@ -1,15 +1,12 @@
-# Documentation: https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Formula-Cookbook.md
-#                http://www.rubydoc.info/github/Homebrew/homebrew/master/Formula
-
 class PetscFluidity < Formula
   desc ""
-  homepage ""
+  homepage "http://ftp.mcs.anl.gov/pub/petsc/"
   url "http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-3.6.3.tar.gz"
   version "3.6.3-fluidity"
   sha256 "2458956c876496f3c8160591324459be7c11f2e1ce09ad98347394c67a46d858"
 
   depends_on "cmake" => :build
-  depends_on :x11 # if your formula requires any X11/XQuartz components
+  depends_on :x11
   depends_on "hypre"
   depends_on "gcc"
   depends_on "netcdf" => "with-fortran"
@@ -20,9 +17,13 @@ class PetscFluidity < Formula
 
   keg_only "Don't conflict with default homebrew petsc installation."
 
-  fails_with :llvm 
+  fails_with :llvm
   fails_with :clang
   fails_with :gcc_4_0
+  fails_with :gcc do
+    build 5666
+    cause "need a recent version of gcc."
+  end
 
   def oprefix(f)
     Formula[f].opt_prefix
@@ -38,13 +39,20 @@ class PetscFluidity < Formula
 
     ENV["PETSC_DIR"] = Dir.getwd
 
-    ENV["MPICC"] = "#{HOMEBREW_PREFIX}/bin/mpicc-5"
-    ENV["MPICXX"] = "#{HOMEBREW_PREFIX}/bin/mpicxx-5"
+    ENV["WRAPPER_DIR"] = "#{HOMEBREW_PREFIX}/Library/Taps/origimbo/homebrew-tools/wrappers"
+
+    FileUtils.cp Dir["#{HOMEBREW_PREFIX}/Library/Taps/origimbo/homebrew-tools/wrappers/*"], Dir.getwd
+
+    bin.install "mpicc-5"
+    bin.install "mpicxx-5"
+
+    system "#{bin}/mpicc-5", "--version"
+    system "#{bin}/mpicxx-5", "--version"
 
     system "./configure", "--with-shared-libraries=0",
                           "--with-pic=fPIC",
-                          "--with-cc=#{ENV["MPICC"]}",
-                          "--with-cxx=#{ENV["MPICXX"]}",
+                          "--with-cc=#{bin}/mpicc-5",
+                          "--with-cxx=#{bin}/mpicxx-5",
                           "--with-fc=#{ENV["MPIFC"]}",
                           "--with-debugging=0",
                           "--useThreads 0",
@@ -75,15 +83,6 @@ class PetscFluidity < Formula
   end
 
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! It's enough to just replace
-    # "false" with the main program this formula installs, but it'd be nice if you
-    # were more thorough. Run the test with `brew test petsc-lite`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
     system "false"
   end
 end

@@ -14,7 +14,7 @@ env:
 
 script:
 
-  - brew install ${PACKAGE}
+  - brew install -v ${PACKAGE}
   - brew audit   ${PACKAGE}
   - brew info    ${PACKAGE}
   - brew test    ${PACKAGE}
