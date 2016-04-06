@@ -6,11 +6,15 @@ before_install:
   - brew update
   - brew tap origimbo/tools
 
+env:
+
+  - PACKAGE="origimbo/tools/transfig"
+  - PACKAGE="origimbo/tools/petsc-fluidity"
 
 script:
 
-  - brew install origimbo/tools/transfig
-  - brew audit   origimbo/tools/transfig
-  - brew info    origimbo/tools/transfig
-  - brew test    origimbo/tools/transfig
+  - brew install ${PACKAGE}
+  - brew audit   ${PACKAGE}
+  - brew info    ${PACKAGE}
+  - brew test    ${PACKAGE}
   
