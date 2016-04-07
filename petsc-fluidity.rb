@@ -12,6 +12,9 @@ class PetscFluidity < Formula
   depends_on "netcdf" => "with-fortran"
   depends_on "hdf5" => "with-mpi"
   depends_on "valgrind"
+  depends_on "scalapack"
+  depends_on "mumps"
+  depends_on "suite-sparse"
   depends_on :mpi => [:cc, :cxx, :f77, :f90]
   depends_on :fortran
 
@@ -71,10 +74,9 @@ class PetscFluidity < Formula
                           "--with-netcdf-dir=#{oprefix("netcdf")}",
                           "--with-hdf5",
                           "--with-hdf5-dir=#{oprefix("hdf5")}",
-                          "--download-ptscotch",
-                          "--download-mumps",
-                          "--download-suitesparse",
-                          "--download-scalapack",
+                          "--with-mumps-dir=#{oprefix("mumps")}/libexec",
+                          "--with-suitesparse-dir=#{oprefix("suite-sparse")}" if build.with? "suite-sparse",
+                          "--with-scalapack-dir=#{oprefix("scalapack")}",
                           "--with-scalar-type=real",
                           "--prefix=#{prefix}"
     system "make", "all"
