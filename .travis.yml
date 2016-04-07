@@ -10,7 +10,7 @@ before_install:
 env:
 
   - PACKAGE="origimbo/tools/transfig"
-  - PACKAGE="origimbo/tools/petsc-fluidity"
+  - PACKAGE="origimbo/tools/fluidity"
 
 script:
 
