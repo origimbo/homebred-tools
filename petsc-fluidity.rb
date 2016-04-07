@@ -66,7 +66,6 @@ class PetscFluidity < Formula
                           "--download-chaco",
                           "--download-metis",
                           "--download-parmetis",
-                          "--download-exodusii",
                           "--with-netcdf=1",
                           "--with-netcdf-dir=#{oprefix("netcdf")}",
                           "--with-hdf5",
