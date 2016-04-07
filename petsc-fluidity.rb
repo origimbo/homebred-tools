@@ -49,9 +49,6 @@ class PetscFluidity < Formula
     bin.install "mpicc-5"
     bin.install "mpicxx-5"
 
-    system "#{bin}/mpicc-5", "--version"
-    system "#{bin}/mpicxx-5", "--version"
-
     system "./configure", "--with-shared-libraries=0",
                           "--with-pic=fPIC",
                           "--with-cc=#{bin}/mpicc-5",
@@ -75,7 +72,7 @@ class PetscFluidity < Formula
                           "--with-hdf5",
                           "--with-hdf5-dir=#{oprefix("hdf5")}",
                           "--with-mumps-dir=#{oprefix("mumps")}/libexec",
-                          "--with-suitesparse-dir=#{oprefix("suite-sparse")}" if build.with? "suite-sparse",
+                          "--with-suitesparse-dir=#{oprefix("suite-sparse")}",
                           "--with-scalapack-dir=#{oprefix("scalapack")}",
                           "--with-scalar-type=real",
                           "--prefix=#{prefix}"
