@@ -1,22 +1,26 @@
 os:
-  - osx
-
+- osx
 before_install:
-
-  - brew update
-  - brew tap homebrew/science
-  - brew tap homebrew/python	
-  - brew tap origimbo/tools
-
+- brew update
+- brew tap homebrew/science
+- brew tap homebrew/python
+- brew tap origimbo/tools
 env:
-
-  - PACKAGE="origimbo/tools/transfig"
-  - PACKAGE="origimbo/tools/fluidity"
-
+- PACKAGE="origimbo/tools/transfig"
+- PACKAGE="origimbo/tools/petsc-fluidity"
 script:
+- brew install -v ${PACKAGE}
+- brew audit   ${PACKAGE}
+- brew info    ${PACKAGE}
+- brew test    ${PACKAGE}
+- bottled_file=$(brew bottle --rb ${PACKAGE} | head -1 | awk '{ gsub(/...$/, "", $3);
+  print $3}')
 
-  - brew install -v ${PACKAGE}
-  - brew audit   ${PACKAGE}
-  - brew info    ${PACKAGE}
-  - brew test    ${PACKAGE}
-  
+deploy:
+  provider: releases
+  api_key:
+    secure: IkTT9yXe2bQ9YWFcUPT21GH460/dTqlTNLPee+45rF9Uaohjqni/S2CrM2u6Y2DuF+8p801mNlYS7xc82+joTBm5VCHNjkncKWMIy3+WMTfOjuxmjPSrRnBtM4QfmHGd7mSOQv8OElXZNIcz1wkvolJIPP+HPBYVLwzKQCtX0Fe+IIf2X2jw+j3mhF3ZcmSzDGAyqeSObARlN/KhxDEdNPB6gQzLjGO+zJvM7C0KGhWTLl8e19NMWu/FF3bCHv9yBtcdB6aS0j499cIe5EWAgxty/7Uzo89MrPbPEvW4aOBtvf7WNQ77f8j/NktFW/XjI56VMi+MEJJPwO0MqsLrMprLhoRN3EGQbLOHMS+Dj9fM+fLZqyNYeHOj+mEuCXvnu2yzEvWdNjTGMg0fc1J9nXGp+Q1oKP4uZSc8kZ/15/a3/1AGYiMPTflV1lxvAfv0778QnSMK3bIunc33iL+nvHPWa8lD9yO2iLKrHQieOcgDxCXJ+BGDlp+6l3BN8svnK5ghm29G53hDN+7s5JsclbXyP/6i0pmvIO8AHoQq6NXTk1uvLvFbMYQ9/eURjlB4T3wbTCHT6Mo+TNmcm0dzhNlQJaqTvvUBSe2hyPXOHuY/33xt6eBp6/DdxqIijlWIYMganYvT4qFSpRWinUUb6hGAfT17tRY+omkUMw0SpwE=
+  file: $bottled_file
+  skip_cleanup: true
+  on:
+    repo: origimbo/homebrew-tools
