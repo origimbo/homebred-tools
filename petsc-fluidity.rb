@@ -18,8 +18,6 @@ class PetscFluidity < Formula
   depends_on :mpi => [:cc, :cxx, :f77, :f90]
   depends_on :fortran
 
-
-
   keg_only "Don't conflict with default homebrew petsc installation."
 
   fails_with :llvm
@@ -33,8 +31,6 @@ class PetscFluidity < Formula
   def oprefix(f)
     Formula[f].opt_prefix
   end
-
-
 
   def install
     ENV.deparallelize
@@ -69,7 +65,7 @@ class PetscFluidity < Formula
                           "--download-metis",
                           "--download-parmetis",
                           "--with-netcdf=1",
-                          "--with-netcdf-dir=#{oprefix("origimbo/tools/netcdf")}",
+                          "--with-netcdf-dir=#{Formula["origimbo/tools/netcdf"].opt_prefix}",
                           "--with-hdf5",
                           "--with-hdf5-dir=#{oprefix("hdf5")}",
                           "--with-mumps-dir=#{oprefix("mumps")}/libexec",

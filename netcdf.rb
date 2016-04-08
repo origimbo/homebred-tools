@@ -13,12 +13,11 @@ class Netcdf < Formula
   option "with-cxx-compat", "Compile C++ bindings for compatibility"
   option "without-check", "Disable checks (not recommended)"
 
-  depends_on :fortran
+  depends_on :fortran => :recommended
   depends_on "hdf5"
 
   bottle do
     root_url "https://github.com/origimbo/homebrew-tools/releases/download/v1.3/"
-    cellar :any
     sha256 "cfad5fc2e0e8714254f48ac849d9ccd9c55ce8927ac776e63f452cf92cc96a57" => :mavericks
   end
 
