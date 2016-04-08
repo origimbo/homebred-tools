@@ -10,9 +10,10 @@ env:
     - REPO=origimbo/tools/
   matrix:
 #    - PACKAGE=transfig
-#    - PACKAGE=petsc-fluidity
-#    - PACKAGE=zoltan
-    - PACKAGE=fluidity
+    - PACKAGE=netcdf
+    - PACKAGE=petsc-fluidity
+    - PACKAGE=zoltan
+#    - PACKAGE=fluidity
 script:
 - brew install -v --build-bottle ${REPO}${PACKAGE}
 - brew audit   ${REPO}${PACKAGE}  || true
