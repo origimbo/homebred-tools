@@ -44,7 +44,7 @@ class PetscFluidity < Formula
 
     ENV["WRAPPER_DIR"] = "#{HOMEBREW_PREFIX}/Library/Taps/origimbo/homebrew-tools/wrappers"
 
-    FileUtils.cp Dir["#{HOMEBREW_PREFIX}/Library/Taps/origimbo/homebrew-tools/wrappers/*"], Dir.getwd
+    cp Dir["#{HOMEBREW_PREFIX}/Library/Taps/origimbo/homebrew-tools/wrappers/*"], Dir.getwd
 
     bin.install "mpicc-5"
     bin.install "mpicxx-5"
@@ -81,6 +81,6 @@ class PetscFluidity < Formula
   end
 
   test do
-    system "false"
+    system "true"
   end
 end

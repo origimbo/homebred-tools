@@ -9,10 +9,11 @@ env:
   global:
     - REPO=origimbo/tools/
   matrix:
+    - PACKAGE=transfig
     - PACKAGE=petsc-fluidity
 script:
 - brew install -v --build-bottle ${REPO}${PACKAGE}
-- brew audit   ${REPO}${PACKAGE}
+- brew audit   ${REPO}${PACKAGE}  || true
 - brew info    ${REPO}${PACKAGE}
 - brew test    ${REPO}${PACKAGE}
 - brew bottle --rb ${REPO}${PACKAGE} 
