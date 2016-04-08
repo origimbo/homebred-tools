@@ -11,7 +11,8 @@ env:
   matrix:
 #    - PACKAGE=transfig
 #    - PACKAGE=petsc-fluidity
-    - PACKAGE=zoltan
+#    - PACKAGE=zoltan
+    - PACKAGE=fluidity
 script:
 - brew install -v --build-bottle ${REPO}${PACKAGE}
 - brew audit   ${REPO}${PACKAGE}  || true
