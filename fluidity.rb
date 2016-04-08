@@ -43,7 +43,7 @@ class Fluidity < Formula
     ENV["F77"] = "mpif90"
     ENV["FC"] = "mpif90"
 
-    ENV["CPPFLAGS"] = "-I#{oprefix("origimbo/tools/zoltan")}/include -I#{oprefix("jrper/fluidity/vtk5")}/include/vtk-5.10"
+    ENV["CPPFLAGS"] = "-I#{oprefix("origimbo/tools/zoltan")}/include -I#{oprefix("vtk5")}/include/vtk-5.10"
     ENV["LDFLAGS"] = "-L#{oprefix("vtk5")}/lib/vtk-5.10 -lvtkIO -lvtkHybrid -lvtkGraphics -lvtkRendering -lvtkFiltering -lvtkCommon"
     
     ENV["PETSC_DIR"] = "#{HOMEBREW_PREFIX}/opt/petsc-fluidity"
