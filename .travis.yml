@@ -9,8 +9,9 @@ env:
   global:
     - REPO=origimbo/tools/
   matrix:
-    - PACKAGE=transfig
-    - PACKAGE=petsc-fluidity
+#    - PACKAGE=transfig
+#    - PACKAGE=petsc-fluidity
+    - PACKAGE=zoltan
 script:
 - brew install -v --build-bottle ${REPO}${PACKAGE}
 - brew audit   ${REPO}${PACKAGE}  || true
