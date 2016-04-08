@@ -15,7 +15,7 @@ class Fluidity < Formula
   depends_on "python"
   depends_on "numpy"
   depends_on "udunits"
-  depends_on "vtk"
+  depends_on "vtk5"
   depends_on "netcdf" => "with-fortran"
 
   option "enable-2d-adaptivity", "Build and link libmba2 for 2d adaptivity"
@@ -43,8 +43,8 @@ class Fluidity < Formula
     ENV["F77"] = "mpif90"
     ENV["FC"] = "mpif90"
 
-    ENV["CPPFLAGS"] = "-I#{oprefix("jrper/fluidity/zoltan")}/include -I#{oprefix("jrper/fluidity/vtk5")}/include/vtk-5.10"
-    ENV["LDFLAGS"] = "-L#{oprefix("jrper/fluidity/vtk5")}/lib/vtk-5.10 -lvtkIO -lvtkHybrid -lvtkGraphics -lvtkRendering -lvtkFiltering -lvtkCommon"
+    ENV["CPPFLAGS"] = "-I#{oprefix("origimbo/tools/zoltan")}/include -I#{oprefix("jrper/fluidity/vtk5")}/include/vtk-5.10"
+    ENV["LDFLAGS"] = "-L#{oprefix("vtk5")}/lib/vtk-5.10 -lvtkIO -lvtkHybrid -lvtkGraphics -lvtkRendering -lvtkFiltering -lvtkCommon"
     
     ENV["PETSC_DIR"] = "#{HOMEBREW_PREFIX}/opt/petsc-fluidity"
 
