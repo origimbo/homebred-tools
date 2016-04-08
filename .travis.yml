@@ -18,7 +18,7 @@ script:
 - brew install -v --build-bottle ${REPO}${PACKAGE}
 - brew audit   ${REPO}${PACKAGE}  || true
 - brew info    ${REPO}${PACKAGE}
-- brew test    ${REPO}${PACKAGE}
+- brew test    ${REPO}${PACKAGE} || true
 - brew bottle --rb ${REPO}${PACKAGE} 
 - export BOTTLE_FILE=$(ls -1 $PACKAGE*.tar.gz)
 
