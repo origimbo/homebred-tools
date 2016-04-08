@@ -12,6 +12,7 @@ class Zoltan < Formula
   mpilang = [:cc, :cxx, :f90]
   depends_on :mpi => mpilang
 
+
   fails_with :llvm 
   fails_with :clang
   fails_with :gcc_4_0
@@ -61,4 +62,9 @@ class Zoltan < Formula
       system "make", "install"
     end
   end
+
+  test do
+    system "true"
+  end
+
 end

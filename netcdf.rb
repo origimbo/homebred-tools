@@ -16,6 +16,12 @@ class Netcdf < Formula
   depends_on :fortran
   depends_on "hdf5"
 
+  bottle do
+    root_url "https://github.com/origimbo/homebrew-tools/releases/download/v1.3/"
+    cellar :any
+    sha256 "cfad5fc2e0e8714254f48ac849d9ccd9c55ce8927ac776e63f452cf92cc96a57" => :mavericks
+  end
+
   resource "cxx" do
     url "https://github.com/Unidata/netcdf-cxx4/archive/v4.2.1.tar.gz"
     sha256 "bad56abfc99f321829070c04aebb377fc8942a4d09e5a3c88ad2b6547ed50ebc"

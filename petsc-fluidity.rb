@@ -19,7 +19,7 @@ class PetscFluidity < Formula
   depends_on :fortran
 
   bottle do
-    root_url "https://github.com/origimbo/homebrew-tools/releases/download/v1.0/"
+    root_url "https://github.com/origimbo/homebrew-tools/releases/download/v1.3/"
     sha256 "0be2924b95217af324ec613a6b87e1bbf5ae4af1fb2fb8c8af2362ef5528e329" => :mavericks
   end
 
@@ -72,7 +72,7 @@ class PetscFluidity < Formula
                           "--download-metis",
                           "--download-parmetis",
                           "--with-netcdf=1",
-                          "--with-netcdf-dir=#{oprefix("netcdf")}",
+                          "--with-netcdf-dir=#{oprefix("origimbo/tools/netcdf")}",
                           "--with-hdf5",
                           "--with-hdf5-dir=#{oprefix("hdf5")}",
                           "--with-mumps-dir=#{oprefix("mumps")}/libexec",
