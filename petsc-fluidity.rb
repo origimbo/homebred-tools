@@ -9,7 +9,7 @@ class PetscFluidity < Formula
   depends_on :x11
   depends_on "hypre"
   depends_on "gcc"
-  depends_on "netcdf" => "with-fortran"
+  depends_on "origimbo/tools/netcdf"
   depends_on "hdf5" => "with-mpi"
   depends_on "valgrind"
   depends_on "scalapack"

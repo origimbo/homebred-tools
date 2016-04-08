@@ -12,11 +12,12 @@ class Fluidity < Formula
   depends_on :x11
   depends_on "origimbo/tools/petsc-fluidity"
   depends_on "origimbo/tools/zoltan"
+  depends_on "origimbo/tools/netcdf"
   depends_on "python"
   depends_on "numpy"
   depends_on "udunits"
+  depends_on "gnu-sed"
   depends_on "vtk5"
-  depends_on "netcdf" => "with-fortran"
 
   option "enable-2d-adaptivity", "Build and link libmba2 for 2d adaptivity"
   option "enable-debug", "Build debug version"
