@@ -12,8 +12,9 @@ env:
 #    - PACKAGE=transfig
 #    - PACKAGE=netcdf
     - PACKAGE=petsc-fluidity
-#    - PACKAGE=zoltan
-#    - PACKAGE=fluidity
+    - PACKAGE=libspud
+    - PACKAGE=zoltan
+    - PACKAGE=fluidity
 script:
 - brew install -v --build-bottle ${REPO}${PACKAGE}
 - brew audit   ${REPO}${PACKAGE}  || true
