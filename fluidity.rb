@@ -12,7 +12,6 @@ class Fluidity < Formula
   depends_on :x11
   depends_on "origimbo/tools/petsc-fluidity"
   depends_on "origimbo/tools/zoltan"
-  depends_on "origimbo/tools/netcdf"
   depends_on "python"
   depends_on "numpy"
   depends_on "udunits"
@@ -39,8 +38,8 @@ class Fluidity < Formula
   def install
     # ENV.deparallelize  # if your formula fails when building in parallel
 
-    ENV["CC"] = "#{HOMEBREW_PREFIX}/bin/mpicc-5"
-    ENV["CXX"] = "#{HOMEBREW_PREFIX}/bin/mpicxx-5"
+    ENV["CC"] = "#{HOMEBREW_PREFIX}/bin/mpicc"
+    ENV["CXX"] = "#{HOMEBREW_PREFIX}/bin/mpicxx"
     ENV["F77"] = "mpif90"
     ENV["FC"] = "mpif90"
 
