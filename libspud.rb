@@ -16,6 +16,12 @@ class Libspud < Formula
   depends_on "pygtk" => "with-libglade"
   depends_on :fortran
 
+  bottle do
+    root_url "https://github.com/origimbo/homebrew-tools/releases/download/v2.1/" 
+    cellar :any_skip_relocation
+    sha256 "caec3fe5d64de3500520d86d8460aec1002dc284a42b1066b8e47d566701105d" => :mavericks
+  end
+
   env :std
 
   fails_with :llvm 

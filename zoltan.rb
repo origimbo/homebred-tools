@@ -11,6 +11,12 @@ class Zoltan < Formula
   mpilang = [:cc, :cxx, :f90]
   depends_on :mpi => mpilang
 
+  bottle do
+   root_url "https://github.com/origimbo/homebrew-tools/releases/download/v2.1/" 
+   sha256 "7ecf099174c6e0687921605777f2a4c666aa83a1f8e8970678156f2dcc8eae90" => :mavericks
+  end
+
+
   fails_with :llvm 
   fails_with :gcc_4_0
 

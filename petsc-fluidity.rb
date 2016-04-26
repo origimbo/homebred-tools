@@ -23,6 +23,11 @@ class PetscFluidity < Formula
   depends_on :mpi => [:cc, :cxx, :f77, :f90]
   depends_on :fortran
 
+  bottle do
+    root_url "https://github.com/origimbo/homebrew-tools/releases/download/v2.1/" 
+    sha256 "952c231f62acbf308fbe0f42cb42e17a72b2dcc79edeb6295f9c78cb2128dc3b" => :mavericks
+  end
+
   keg_only "Don't conflict with default homebrew petsc installation."
 
   fails_with :llvm 

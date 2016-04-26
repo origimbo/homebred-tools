@@ -15,7 +15,7 @@ class Fluidity < Formula
   depends_on "numpy"
   depends_on "udunits"
   depends_on "gnu-sed"
-  depends_on "origimbo/tools/vtk5"
+  depends_on "vtk5"
   depends_on "judy"
   depends_on "spatialindex"
   depends_on "origimbo/tools/libspud"
